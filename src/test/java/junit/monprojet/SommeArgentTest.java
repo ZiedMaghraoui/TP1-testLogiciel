@@ -1,5 +1,6 @@
 package junit.monprojet;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,9 +13,15 @@ class SommeArgentTest {
 
     @BeforeEach
     void setUp() {
+        System.out.println("passage avant exécution d'une méthode de test");
         m12CHF = new SommeArgent(12, "CHF");
         m14CHF = new SommeArgent(14, "CHF");
         m14USD = new SommeArgent(14, "USD");
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("passage APRES exécution d'une méthode de test");
     }
 
     @Test
