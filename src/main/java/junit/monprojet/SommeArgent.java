@@ -21,8 +21,8 @@ public class SommeArgent {
         return new SommeArgent(getQuantite() + m.getQuantite(), getUnite());
     }
 
-    public boolean equals(Object anObject){
-        if (!(anObject instanceof SommeArgent)){
+    public boolean equals(Object anObject) {
+        if (!(anObject instanceof SommeArgent)) {
             return false;
         }
         SommeArgent convObject = (SommeArgent) anObject;
