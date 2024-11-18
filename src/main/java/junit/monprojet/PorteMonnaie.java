@@ -28,9 +28,30 @@ public class PorteMonnaie {
     public String toString() {
         String result = "{PorteMonnaie: ";
         for (Map.Entry<String, Integer> entry : contenu.entrySet()) {
-            result += entry.getKey() + entry.getValue() + ", ";
+            result += entry.getValue() + entry.getKey() + ", ";
         }
         result += "}";
         return result;
+    }
+
+    public boolean equals(Object anObject) {
+//        check if instance
+        if (!(anObject instanceof PorteMonnaie)) return false;
+//        check if same currencies
+        PorteMonnaie pm = (PorteMonnaie) anObject;
+        if (!contenu.keySet().equals(pm.getContenu().keySet())) return false;
+//        check if same amounts
+        boolean res = true;
+        for (Map.Entry<String, Integer> entry : contenu.entrySet()) {
+            String key = entry.getKey();
+            Integer value1 = entry.getValue();
+            Integer value2 = pm.getContenu().get(key);
+
+            if (!value1.equals(value2)) {
+                res = false;
+                break;
+            }
+        }
+        return res;
     }
 }
