@@ -25,13 +25,27 @@ class SommeArgentTest {
     }
 
     @Test
-    void testAdd() {
+    void testAdd() throws UniteDistincteException {
 //        SommeArgent m12CHF = new SommeArgent(12, "CHF"); // (1)
 //        SommeArgent m14CHF = new SommeArgent(14, "CHF");
         SommeArgent expected = new SommeArgent(26, "CHF");
         SommeArgent result = m12CHF.add(m14CHF); // (2)
         Assertions.assertTrue(expected.equals(result)); // (3)
     }
+
+    @Test
+    void testAddDistinct() {
+        Assertions.assertThrows(UniteDistincteException.class, () -> {
+            SommeArgent result = m12CHF.add(m14USD);
+        });
+    }
+
+    /*  Pour JUnit 4
+    @Test(expected = UniteDistincteException.class)
+    void testAddDistinctJU4() throws UniteDistincteException {
+        SommeArgent result = m12CHF.add(m14USD);
+    }
+    */
 
     @Test
     void testEquals() {
